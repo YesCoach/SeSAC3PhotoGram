@@ -9,21 +9,47 @@ import UIKit
 
 class SearchViewController: BaseViewController {
 
-    let searchBar = {
-        let view = UISearchBar()
-        view.placeholder = "검색어를 입력해주세요"
-        return view
-    }()
+    let searchView = SearchView()
+
+    let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+
+    override func loadView() {
+        self.view = searchView
+    }
 
     override func configureView() {
         super.configureView()
+
+        searchView.collectionView.dataSource = self
+        searchView.collectionView.delegate = self
     }
 
     override func configureLayout() {
         super.configureLayout()
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-        }
+    }
+}
+
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return imageList.count
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "SearchCollectionViewCell",
+            for: indexPath
+        ) as? SearchCollectionViewCell
+        else { return UICollectionViewCell() }
+
+        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+
+        return cell
     }
 }

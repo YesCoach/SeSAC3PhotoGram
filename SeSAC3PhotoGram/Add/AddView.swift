@@ -1,5 +1,5 @@
 //
-//  AddViewController.swift
+//  AddView.swift
 //  SeSAC3PhotoGram
 //
 //  Created by 박태현 on 2023/08/28.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddViewController: BaseViewController {
+class AddView: BaseView {
 
     let photoImageView = {
         let view = UIImageView()
@@ -22,31 +22,17 @@ class AddViewController: BaseViewController {
         return view
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        searchButton.addTarget(self, action: #selector(didSearchButtonClicked), for: .touchUpInside)
-    }
-
-    @objc func didSearchButtonClicked(_ sender: UIButton) {
-        present(SearchViewController(), animated: true)
-    }
-
     override func configureView() {
         super.configureView()
-        print("Add ConfigureView")
-        view.backgroundColor = .systemBackground
+        [
+            photoImageView, searchButton
+        ].forEach { addSubview($0) }
     }
 
     override func configureLayout() {
         super.configureLayout()
-        print("Add SetConstraints")
-        [
-            photoImageView, searchButton
-        ].forEach { view.addSubview($0) }
-
         photoImageView.snp.makeConstraints {
-            $0.topMargin.leadingMargin.trailingMargin.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.topMargin.leadingMargin.trailingMargin.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.height.equalToSuperview().multipliedBy(0.3)
         }
 
@@ -54,6 +40,5 @@ class AddViewController: BaseViewController {
             $0.size.equalTo(50)
             $0.bottom.trailing.equalTo(photoImageView)
         }
-
     }
 }
