@@ -24,10 +24,12 @@ class AddViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        searchButton.addTarget(self, action: #selector(didSearchButtonClicked), for: .touchUpInside)
     }
 
-    override func configureUI() {
-        super.configureUI()
+    @objc func didSearchButtonClicked(_ sender: UIButton) {
+        present(SearchViewController(), animated: true)
     }
 
     override func configureView() {
