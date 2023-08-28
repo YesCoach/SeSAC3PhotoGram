@@ -17,6 +17,22 @@ class SearchViewController: BaseViewController {
         self.view = searchView
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // addObserver보다 post가 먼저 신호를 보내면 Observer는 신호를 받지 못한다.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didRecommandKeywordNotificationArrived),
+            name: NSNotification.Name("RecommandKeyword"),
+            object: nil
+        )
+    }
+
+    @objc func didRecommandKeywordNotificationArrived(_ sender: NSNotification) {
+        print(#function)
+    }
+
     override func configureView() {
         super.configureView()
 
@@ -51,5 +67,19 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
 
         return cell
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+
+        NotificationCenter.default.post(
+            name: NSNotification.Name("SelectedImage"),
+            object: nil,
+            userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"]
+        )
+
+        dismiss(animated: true)
     }
 }
