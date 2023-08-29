@@ -31,7 +31,7 @@ class AddView: BaseView {
     let dateButton = {
         let view = UIButton()
         view.backgroundColor = .systemMint
-        view.setTitle("23년 8월 29일", for: .normal)
+        view.setTitle(DateFormatter.today(), for: .normal)
         return view
     }()
 

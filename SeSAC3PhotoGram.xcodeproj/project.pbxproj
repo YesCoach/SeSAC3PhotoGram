@@ -23,6 +23,7 @@
 		8958997D2A9D7AB900F1BF8B /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */; };
 		895899802A9D7C8100F1BF8B /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958997F2A9D7C8100F1BF8B /* DateView.swift */; };
 		895899832A9D7D3800F1BF8B /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899822A9D7D3800F1BF8B /* DateViewController.swift */; };
+		895899852A9D8E8400F1BF8B /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899842A9D8E8400F1BF8B /* DateFormatter+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
 		8958997F2A9D7C8100F1BF8B /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		895899822A9D7D3800F1BF8B /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		895899842A9D8E8400F1BF8B /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */,
+				895899842A9D8E8400F1BF8B /* DateFormatter+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				895899802A9D7C8100F1BF8B /* DateView.swift in Sources */,
 				8958996B2A9C243200F1BF8B /* BaseViewController.swift in Sources */,
 				895899762A9C337B00F1BF8B /* SearchView.swift in Sources */,
+				895899852A9D8E8400F1BF8B /* DateFormatter+.swift in Sources */,
 				895899712A9C2EC700F1BF8B /* BaseView.swift in Sources */,
 				895899542A9C1DA400F1BF8B /* AppDelegate.swift in Sources */,
 				895899562A9C1DA400F1BF8B /* SceneDelegate.swift in Sources */,

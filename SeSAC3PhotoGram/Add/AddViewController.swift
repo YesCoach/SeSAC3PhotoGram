@@ -125,7 +125,7 @@ class AddViewController: BaseViewController {
 extension AddViewController: PassDataDelegate {
 
     func receiveDate(date: Date) {
-        mainView.dateButton.setTitle("\(date)", for: .normal)
+        mainView.dateButton.setTitle(DateFormatter.convertData(date: date), for: .normal)
     }
 
 }
