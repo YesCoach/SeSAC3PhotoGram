@@ -14,8 +14,8 @@
             filePath = "SeSAC3PhotoGram/Add/AddViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "didSelectedImageNotificationArrived(_:)"
             landmarkType = "7">
          </BreakpointContent>
