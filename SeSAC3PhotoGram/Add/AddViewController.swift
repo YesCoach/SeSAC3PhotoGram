@@ -18,9 +18,10 @@ class AddViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.removeObserver(
+        NotificationCenter.default.addObserver(
             self,
-            name: NSNotification.Name("SelectedImage"),
+            selector: #selector(didSelectedImageNotificationArrived),
+            name: .selectedImage,
             object: nil
         )
     }
@@ -67,7 +68,11 @@ class AddViewController: BaseViewController {
 
         // 값전달을 하려는 뷰 컨트롤러에서 아직 addObserver를 하지 않은 상태에서 post
         // 이 경우 보낸 Notification은 받을 수 없다
-        NotificationCenter.default.post(name: NSNotification.Name("RecommandKeyword"), object: nil, userInfo: ["word": word.randomElement()!])
+        NotificationCenter.default.post(
+            name: .recommandKeyword,
+            object: nil,
+            userInfo: ["word": word.randomElement()!]
+        )
 
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }

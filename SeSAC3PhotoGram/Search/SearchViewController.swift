@@ -24,7 +24,7 @@ class SearchViewController: BaseViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didRecommandKeywordNotificationArrived),
-            name: NSNotification.Name("RecommandKeyword"),
+            name: .recommandKeyword,
             object: nil
         )
     }
@@ -77,7 +77,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         // Presenting 하기 전에 미리 옵저버 등록해야, 나중에 값전달을 받아올때 정상적으로 받을 수 있다.
 
         NotificationCenter.default.post(
-            name: NSNotification.Name("SelectedImage"),
+            name: .selectedImage,
             object: nil,
             userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"]
         )
