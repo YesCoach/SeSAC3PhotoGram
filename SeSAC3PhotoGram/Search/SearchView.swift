@@ -41,6 +41,9 @@ class SearchView: BaseView {
             $0.top.equalTo(searchBar.snp.bottom)
         }
     }
+}
+
+private extension SearchView {
 
     func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
@@ -50,4 +53,5 @@ class SearchView: BaseView {
         layout.itemSize = CGSize(width: size / 4, height: size / 4)
         return layout
     }
+
 }

@@ -24,7 +24,33 @@
 		895899802A9D7C8100F1BF8B /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958997F2A9D7C8100F1BF8B /* DateView.swift */; };
 		895899832A9D7D3800F1BF8B /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899822A9D7D3800F1BF8B /* DateViewController.swift */; };
 		895899852A9D8E8400F1BF8B /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899842A9D8E8400F1BF8B /* DateFormatter+.swift */; };
+		895899B32A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */; };
+		895899B42A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		895899B02A9D9BA500F1BF8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 895899AC2A9D9BA500F1BF8B /* SeSACPhotoFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 895899902A9D92B100F1BF8B;
+			remoteInfo = SeSACPhotoFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		895899B52A9D9C1A00F1BF8B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				895899B42A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		895899502A9C1DA400F1BF8B /* SeSAC3PhotoGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC3PhotoGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +71,7 @@
 		8958997F2A9D7C8100F1BF8B /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		895899822A9D7D3800F1BF8B /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		895899842A9D8E8400F1BF8B /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		895899AC2A9D9BA500F1BF8B /* SeSACPhotoFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACPhotoFramework.xcodeproj; path = ../SeSACPhotoFramework/SeSACPhotoFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				895899B32A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Frameworks */,
 				895899692A9C1E3300F1BF8B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,8 +90,10 @@
 		895899472A9C1DA400F1BF8B = {
 			isa = PBXGroup;
 			children = (
+				895899AC2A9D9BA500F1BF8B /* SeSACPhotoFramework.xcodeproj */,
 				895899522A9C1DA400F1BF8B /* SeSAC3PhotoGram */,
 				895899512A9C1DA400F1BF8B /* Products */,
+				895899B22A9D9C1A00F1BF8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +177,21 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		895899AD2A9D9BA500F1BF8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		895899B22A9D9C1A00F1BF8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,6 +202,7 @@
 				8958994C2A9C1DA400F1BF8B /* Sources */,
 				8958994D2A9C1DA400F1BF8B /* Frameworks */,
 				8958994E2A9C1DA400F1BF8B /* Resources */,
+				895899B52A9D9C1A00F1BF8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,12 +245,28 @@
 			);
 			productRefGroup = 895899512A9C1DA400F1BF8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 895899AD2A9D9BA500F1BF8B /* Products */;
+					ProjectRef = 895899AC2A9D9BA500F1BF8B /* SeSACPhotoFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8958994F2A9C1DA400F1BF8B /* SeSAC3PhotoGram */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SeSACPhotoFramework.framework;
+			remoteRef = 895899B02A9D9BA500F1BF8B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8958994E2A9C1DA400F1BF8B /* Resources */ = {
