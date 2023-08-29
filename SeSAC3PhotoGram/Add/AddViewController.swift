@@ -82,6 +82,12 @@ class AddViewController: BaseViewController {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 
+    @objc func didSearchProtocolButtonClicked(_ sender: UIButton) {
+        let viewController = SearchViewController()
+        viewController.delegate = self
+        present(viewController, animated: true)
+    }
+
     @objc func didDateButtonClicked(_ sender: UIButton) {
         // Protocol 값 전달 5.
         let viewController = DateViewController()
@@ -95,6 +101,11 @@ class AddViewController: BaseViewController {
         mainView.searchButton.addTarget(
             self,
             action: #selector(didSearchButtonClicked),
+            for: .touchUpInside
+        )
+        mainView.searchProtocolButton.addTarget(
+            self,
+            action: #selector(didSearchProtocolButtonClicked),
             for: .touchUpInside
         )
         mainView.dateButton.addTarget(
@@ -115,6 +126,16 @@ extension AddViewController: PassDataDelegate {
 
     func receiveDate(date: Date) {
         mainView.dateButton.setTitle("\(date)", for: .normal)
+    }
+
+}
+
+// MARK: - SearchViewControllerDelegate 구현
+
+extension AddViewController: SearchViewControllerDelegate {
+
+    func passData(_ image: UIImage?) {
+        mainView.photoImageView.image = image
     }
 
 }

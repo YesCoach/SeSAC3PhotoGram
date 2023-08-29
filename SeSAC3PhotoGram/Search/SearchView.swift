@@ -33,7 +33,7 @@ class SearchView: BaseView {
         addSubview(searchBar)
         addSubview(collectionView)
         searchBar.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
+            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
         }
 
         collectionView.snp.makeConstraints {

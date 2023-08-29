@@ -22,6 +22,12 @@ class AddView: BaseView {
         return view
     }()
 
+    let searchProtocolButton = {
+        let view = UIButton()
+        view.backgroundColor = .brown
+        return view
+    }()
+
     let dateButton = {
         let view = UIButton()
         view.backgroundColor = .systemMint
@@ -32,7 +38,7 @@ class AddView: BaseView {
     override func configureView() {
         super.configureView()
         [
-            photoImageView, searchButton, dateButton
+            photoImageView, searchButton, searchProtocolButton, dateButton
         ].forEach { addSubview($0) }
     }
 
@@ -46,6 +52,11 @@ class AddView: BaseView {
         searchButton.snp.makeConstraints {
             $0.size.equalTo(50)
             $0.bottom.trailing.equalTo(photoImageView)
+        }
+
+        searchProtocolButton.snp.makeConstraints {
+            $0.size.equalTo(50)
+            $0.bottom.leading.equalTo(photoImageView)
         }
 
         dateButton.snp.makeConstraints {

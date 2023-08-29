@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol SearchViewControllerDelegate {
+    func passData(_ image: UIImage?)
+}
+
 class SearchViewController: BaseViewController {
 
     let searchView = SearchView()
 
     let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    var delegate: SearchViewControllerDelegate?
 
     override func loadView() {
         self.view = searchView
@@ -75,13 +80,18 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     ) {
 
         // Presenting 하기 전에 미리 옵저버 등록해야, 나중에 값전달을 받아올때 정상적으로 받을 수 있다.
-
+        // Notification을 통한 값 전달
+        /*
         NotificationCenter.default.post(
             name: .selectedImage,
             object: nil,
             userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"]
         )
+         */
 
+        // Protocol을 통한 값 전달
+
+        delegate?.passData(UIImage(systemName: imageList[indexPath.item]))
         navigationController?.popViewController(animated: true)
     }
 }
