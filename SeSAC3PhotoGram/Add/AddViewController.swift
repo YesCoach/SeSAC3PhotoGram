@@ -7,6 +7,11 @@
 
 import UIKit
 
+// Protocol 값 전달 1.
+protocol PassDataDelegate {
+    func receiveDate(date: Date)
+}
+
 class AddViewController: BaseViewController {
 
     let mainView = AddView()
@@ -77,14 +82,39 @@ class AddViewController: BaseViewController {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 
+    @objc func didDateButtonClicked(_ sender: UIButton) {
+        // Protocol 값 전달 5.
+        let viewController = DateViewController()
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     override func configureView() {
         super.configureView()
         print("Add ConfigureView")
-        mainView.searchButton.addTarget(self, action: #selector(didSearchButtonClicked), for: .touchUpInside)
+        mainView.searchButton.addTarget(
+            self,
+            action: #selector(didSearchButtonClicked),
+            for: .touchUpInside
+        )
+        mainView.dateButton.addTarget(
+            self,
+            action: #selector(didDateButtonClicked),
+            for: .touchUpInside
+        )
     }
 
     override func configureLayout() {
         super.configureLayout()
         print("Add SetConstraints")
     }
+}
+
+// Protocol 값 전달 4.
+extension AddViewController: PassDataDelegate {
+
+    func receiveDate(date: Date) {
+        mainView.dateButton.setTitle("\(date)", for: .normal)
+    }
+
 }

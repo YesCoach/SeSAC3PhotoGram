@@ -21,6 +21,8 @@
 		895899782A9C365A00F1BF8B /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899772A9C365A00F1BF8B /* BaseCollectionViewCell.swift */; };
 		8958997A2A9C37DF00F1BF8B /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899792A9C37DF00F1BF8B /* SearchCollectionViewCell.swift */; };
 		8958997D2A9D7AB900F1BF8B /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */; };
+		895899802A9D7C8100F1BF8B /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8958997F2A9D7C8100F1BF8B /* DateView.swift */; };
+		895899832A9D7D3800F1BF8B /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899822A9D7D3800F1BF8B /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		895899772A9C365A00F1BF8B /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		895899792A9C37DF00F1BF8B /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
+		8958997F2A9D7C8100F1BF8B /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
+		895899822A9D7D3800F1BF8B /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +76,12 @@
 		895899522A9C1DA400F1BF8B /* SeSAC3PhotoGram */ = {
 			isa = PBXGroup;
 			children = (
+				8958997E2A9D7BD200F1BF8B /* Application */,
 				895899722A9C2FD300F1BF8B /* Add */,
+				895899812A9D7D2800F1BF8B /* Date */,
 				8958996D2A9C272D00F1BF8B /* Search */,
 				8958996C2A9C244C00F1BF8B /* Base */,
 				8958997B2A9D7AA900F1BF8B /* Extension */,
-				8958997E2A9D7BD200F1BF8B /* Application */,
 				895899612A9C1DA500F1BF8B /* Info.plist */,
 			);
 			path = SeSAC3PhotoGram;
@@ -128,6 +133,15 @@
 				8958995E2A9C1DA500F1BF8B /* LaunchScreen.storyboard */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		895899812A9D7D2800F1BF8B /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				8958997F2A9D7C8100F1BF8B /* DateView.swift */,
+				895899822A9D7D3800F1BF8B /* DateViewController.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +225,9 @@
 				895899782A9C365A00F1BF8B /* BaseCollectionViewCell.swift in Sources */,
 				895899582A9C1DA400F1BF8B /* AddViewController.swift in Sources */,
 				8958997A2A9C37DF00F1BF8B /* SearchCollectionViewCell.swift in Sources */,
+				895899832A9D7D3800F1BF8B /* DateViewController.swift in Sources */,
 				8958997D2A9D7AB900F1BF8B /* NSNotification+.swift in Sources */,
+				895899802A9D7C8100F1BF8B /* DateView.swift in Sources */,
 				8958996B2A9C243200F1BF8B /* BaseViewController.swift in Sources */,
 				895899762A9C337B00F1BF8B /* SearchView.swift in Sources */,
 				895899712A9C2EC700F1BF8B /* BaseView.swift in Sources */,

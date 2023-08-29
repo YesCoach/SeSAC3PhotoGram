@@ -22,10 +22,17 @@ class AddView: BaseView {
         return view
     }()
 
+    let dateButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemMint
+        view.setTitle("23년 8월 29일", for: .normal)
+        return view
+    }()
+
     override func configureView() {
         super.configureView()
         [
-            photoImageView, searchButton
+            photoImageView, searchButton, dateButton
         ].forEach { addSubview($0) }
     }
 
@@ -39,6 +46,12 @@ class AddView: BaseView {
         searchButton.snp.makeConstraints {
             $0.size.equalTo(50)
             $0.bottom.trailing.equalTo(photoImageView)
+        }
+
+        dateButton.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.top.equalTo(photoImageView.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(photoImageView)
         }
     }
 }
