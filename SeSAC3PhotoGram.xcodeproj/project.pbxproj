@@ -26,6 +26,8 @@
 		895899852A9D8E8400F1BF8B /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899842A9D8E8400F1BF8B /* DateFormatter+.swift */; };
 		895899B32A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */; };
 		895899B42A9D9C1A00F1BF8B /* SeSACPhotoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 895899B12A9D9BA500F1BF8B /* SeSACPhotoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		895899B82A9DB55400F1BF8B /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899B72A9DB55400F1BF8B /* TitleViewController.swift */; };
+		895899BB2A9DC0E300F1BF8B /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899BA2A9DC0E300F1BF8B /* ContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		895899822A9D7D3800F1BF8B /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		895899842A9D8E8400F1BF8B /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		895899AC2A9D9BA500F1BF8B /* SeSACPhotoFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeSACPhotoFramework.xcodeproj; path = ../SeSACPhotoFramework/SeSACPhotoFramework.xcodeproj; sourceTree = "<group>"; };
+		895899B72A9DB55400F1BF8B /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		895899BA2A9DC0E300F1BF8B /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				8958997E2A9D7BD200F1BF8B /* Application */,
 				895899722A9C2FD300F1BF8B /* Add */,
 				895899812A9D7D2800F1BF8B /* Date */,
+				895899B62A9DB53E00F1BF8B /* Title */,
+				895899B92A9DC0D100F1BF8B /* Content */,
 				8958996D2A9C272D00F1BF8B /* Search */,
 				8958996C2A9C244C00F1BF8B /* Base */,
 				8958997B2A9D7AA900F1BF8B /* Extension */,
@@ -190,6 +196,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		895899B62A9DB53E00F1BF8B /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				895899B72A9DB55400F1BF8B /* TitleViewController.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		895899B92A9DC0D100F1BF8B /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				895899BA2A9DC0E300F1BF8B /* ContentViewController.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				895899BB2A9DC0E300F1BF8B /* ContentViewController.swift in Sources */,
 				895899742A9C300600F1BF8B /* AddView.swift in Sources */,
 				8958996F2A9C276200F1BF8B /* SearchViewController.swift in Sources */,
 				895899782A9C365A00F1BF8B /* BaseCollectionViewCell.swift in Sources */,
@@ -299,6 +322,7 @@
 				895899712A9C2EC700F1BF8B /* BaseView.swift in Sources */,
 				895899542A9C1DA400F1BF8B /* AppDelegate.swift in Sources */,
 				895899562A9C1DA400F1BF8B /* SceneDelegate.swift in Sources */,
+				895899B82A9DB55400F1BF8B /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

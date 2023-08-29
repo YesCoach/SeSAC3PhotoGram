@@ -35,10 +35,24 @@ class AddView: BaseView {
         return view
     }()
 
+    let titleButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemMint
+        view.setTitle("오늘의 사진", for: .normal)
+        return view
+    }()
+
+    let contentButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemMint
+        view.setTitle("컨텐츠 버튼", for: .normal)
+        return view
+    }()
+
     override func configureView() {
         super.configureView()
         [
-            photoImageView, searchButton, searchProtocolButton, dateButton
+            photoImageView, searchButton, searchProtocolButton, dateButton, titleButton, titleButton, contentButton
         ].forEach { addSubview($0) }
     }
 
@@ -63,6 +77,18 @@ class AddView: BaseView {
             $0.height.equalTo(50)
             $0.top.equalTo(photoImageView.snp.bottom).offset(10)
             $0.horizontalEdges.equalTo(photoImageView)
+        }
+
+        titleButton.snp.makeConstraints {
+            $0.top.equalTo(dateButton.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(photoImageView)
+            $0.height.equalTo(50)
+        }
+
+        contentButton.snp.makeConstraints {
+            $0.top.equalTo(titleButton.snp.bottom).offset(10)
+            $0.horizontalEdges.equalTo(photoImageView)
+            $0.height.equalTo(150)
         }
     }
 }

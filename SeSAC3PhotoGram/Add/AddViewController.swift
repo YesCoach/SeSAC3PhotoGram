@@ -105,6 +105,30 @@ class AddViewController: BaseViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
+    @objc func didTitleButtonClicked(_ sender: UIButton) {
+        let viewController = TitleViewController()
+
+        // Closure - 3
+
+        viewController.completionHandler = { [weak self] text in
+            guard let self else { return }
+            mainView.titleButton.setTitle(text, for: .normal)
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    @objc func didContentButtonClicked(_ sender: UIButton) {
+        let viewController = ContentViewController()
+
+        // Closure - 3
+
+        viewController.completionHandler = { [weak self] text in
+            guard let self else { return }
+            mainView.contentButton.setTitle(text, for: .normal)
+        }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     override func configureView() {
         super.configureView()
         print("Add ConfigureView")
@@ -121,6 +145,16 @@ class AddViewController: BaseViewController {
         mainView.dateButton.addTarget(
             self,
             action: #selector(didDateButtonClicked),
+            for: .touchUpInside
+        )
+        mainView.titleButton.addTarget(
+            self,
+            action: #selector(didTitleButtonClicked),
+            for: .touchUpInside
+        )
+        mainView.contentButton.addTarget(
+            self,
+            action: #selector(didContentButtonClicked),
             for: .touchUpInside
         )
     }
