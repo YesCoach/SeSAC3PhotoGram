@@ -6,16 +6,17 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol SearchViewControllerDelegate {
-    func passData(_ image: UIImage?)
+    func passData(_ imageURL: String)
 }
 
 class SearchViewController: BaseViewController {
 
     let searchView = SearchView()
 
-    var imageList: [String] = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    var imageList: [String] = []
     var delegate: SearchViewControllerDelegate?
 
     override func loadView() {
@@ -94,7 +95,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 
         // Protocol을 통한 값 전달
 
-        delegate?.passData(UIImage(systemName: imageList[indexPath.item]))
+        delegate?.passData(imageList[indexPath.item])
         navigationController?.popViewController(animated: true)
     }
 }

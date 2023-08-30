@@ -7,6 +7,7 @@
 
 import UIKit
 import SeSACPhotoFramework
+import Kingfisher
 
 // Protocol 값 전달 1.
 protocol PassDataDelegate {
@@ -83,7 +84,9 @@ class AddViewController: BaseViewController {
         let actionGallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default)
         let actionWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { [weak self] _ in
             guard let self else { return }
-            navigationController?.pushViewController(SearchViewController(), animated: true)
+            let viewController = SearchViewController()
+            viewController.delegate = self
+            navigationController?.pushViewController(viewController, animated: true)
         }
         let actionCancel = UIAlertAction(title: "취소", style: .cancel)
 
@@ -189,8 +192,8 @@ extension AddViewController: PassDataDelegate {
 
 extension AddViewController: SearchViewControllerDelegate {
 
-    func passData(_ image: UIImage?) {
-        mainView.photoImageView.image = image
+    func passData(_ imageURL: String) {
+        mainView.photoImageView.kf.setImage(with: URL(string: imageURL))
     }
 
 }
