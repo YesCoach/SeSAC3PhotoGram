@@ -84,11 +84,7 @@ class AddViewController: BaseViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let actionGallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { [weak self] _ in
             guard let self else { return }
-            var configuration = PHPickerConfiguration()
-            configuration.filter = .any(of: [.images])
-            let pickerViewController = PHPickerViewController(configuration: configuration)
-            pickerViewController.delegate = self
-            present(pickerViewController, animated: true)
+            presentPHPickerViewController()
         }
         let actionWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { [weak self] _ in
             guard let self else { return }
@@ -187,6 +183,19 @@ class AddViewController: BaseViewController {
     }
 }
 
+private extension AddViewController {
+
+    func presentPHPickerViewController() {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .any(of: [.images])
+
+        let pickerViewController = PHPickerViewController(configuration: configuration)
+        pickerViewController.delegate = self
+        present(pickerViewController, animated: true)
+    }
+
+}
+
 // MARK: - PHPickerViewControllerDelegate 구현
 
 extension AddViewController: PHPickerViewControllerDelegate {
@@ -197,17 +206,38 @@ extension AddViewController: PHPickerViewControllerDelegate {
 
         let itemProvider = results.first?.itemProvider
 
-        if let itemProvider = itemProvider,
-           itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in // 4
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    mainView.photoImageView.image = image as? UIImage
+        guard let itemProvider = itemProvider else { return }
+        guard itemProvider.canLoadObject(ofClass: UIImage.self)
+        else {
+            seseacShowAlert(
+                title: "사진첩의 이미지를 가져오지 못했습니다",
+                message: "다른 이미지를 선택해주세요",
+                buttonTitle: "확인"
+            ) { [weak self] _ in
+                guard let self else { return }
+                presentPHPickerViewController()
+            }
+            return
+        }
+        itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (image, error) in // 4
+            guard let self else { return }
+            if let error {
+                seseacShowAlert(
+                    title: "이미지를 로드하는 과정에서 문제가 발생했습니다.",
+                    message: "다른 이미지를 선택해주세요",
+                    buttonTitle: "확인"
+                ) { [self] _ in
+                    self.presentPHPickerViewController()
                 }
+            }
+            DispatchQueue.main.async { [self] in
+                self.mainView.photoImageView.image = image as? UIImage
             }
         }
     }
 }
+
+// MARK: - PassDataDelegate 구현부
 
 // Protocol 값 전달 4.
 extension AddViewController: PassDataDelegate {
