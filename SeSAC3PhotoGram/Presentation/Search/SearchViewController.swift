@@ -15,7 +15,7 @@ class SearchViewController: BaseViewController {
 
     let searchView = SearchView()
 
-    let imageList = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
+    var imageList: [String] = ["pencil", "star", "person", "star.fill", "xmark", "person.circle"]
     var delegate: SearchViewControllerDelegate?
 
     override func loadView() {
@@ -72,7 +72,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         ) as? SearchCollectionViewCell
         else { return UICollectionViewCell() }
 
-        cell.imageView.image = UIImage(systemName: imageList[indexPath.item])
+        cell.configure(with: imageList[indexPath.item])
 
         return cell
     }
@@ -103,6 +103,15 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        NetworkManager.shared.callRequest(
+            api: .searchPhotos(query: searchBar.text!)
+        ) { [weak self] (data: SearchPhotosResults) in
+            guard let self else { return }
+            imageList = data.results.map { $0.urls?.thumb }.compactMap { $0 }
+            DispatchQueue.main.async { [self] in
+                self.searchView.collectionView.reloadData()
+            }
+        }
     }
 
 }

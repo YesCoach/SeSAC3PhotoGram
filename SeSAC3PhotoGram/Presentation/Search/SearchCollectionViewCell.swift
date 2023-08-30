@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCollectionViewCell: BaseCollectionViewCell {
 
@@ -26,5 +27,15 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints {
             $0.edges.equalTo(contentView)
         }
+    }
+
+}
+
+extension SearchCollectionViewCell {
+
+    func configure(with imageURL: String) {
+        let url = URL(string: imageURL)
+        imageView.kf.setImage(with: url)
+        imageView.kf.indicatorType = .activity
     }
 }

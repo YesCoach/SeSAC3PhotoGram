@@ -35,8 +35,6 @@ class AddViewController: BaseViewController {
             name: .selectedImage,
             object: nil
         )
-
-        NetworkManager.shared.callRequest()
     }
 
     override func viewWillAppear(_ animated: Bool) {
