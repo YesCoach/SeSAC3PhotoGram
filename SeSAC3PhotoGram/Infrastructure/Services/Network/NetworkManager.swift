@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  NetworkManager.swift
 //  SeSAC3PhotoGram
 //
 //  Created by 박태현 on 2023/08/30.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class APIService {
+final class NetworkManager {
 
-    static let shared = APIService() // 인스턴스 생성 방지
+    static let shared = NetworkManager() // 인스턴스 생성 방지
 
     private init() { }
 

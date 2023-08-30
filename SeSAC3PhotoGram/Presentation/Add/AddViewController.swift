@@ -36,7 +36,7 @@ class AddViewController: BaseViewController {
             object: nil
         )
 
-        APIService.shared.callRequest()
+        NetworkManager.shared.callRequest()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -81,17 +81,27 @@ class AddViewController: BaseViewController {
 
     @objc func didSearchButtonClicked(_ sender: UIButton) {
 
-        let word = ["Apple", "Banana", "Cookie", "Cake", "Sky"]
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionGallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default)
+        let actionWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { [weak self] _ in
+            guard let self else { return }
+            navigationController?.pushViewController(SearchViewController(), animated: true)
+        }
+        let actionCancel = UIAlertAction(title: "취소", style: .cancel)
 
-        // 값전달을 하려는 뷰 컨트롤러에서 아직 addObserver를 하지 않은 상태에서 post
-        // 이 경우 보낸 Notification은 받을 수 없다
-        NotificationCenter.default.post(
-            name: .recommandKeyword,
-            object: nil,
-            userInfo: ["word": word.randomElement()!]
-        )
+        [actionGallery, actionWeb, actionCancel].forEach { alert.addAction($0) }
 
-        navigationController?.pushViewController(SearchViewController(), animated: true)
+        present(alert, animated: true)
+
+//        let word = ["Apple", "Banana", "Cookie", "Cake", "Sky"]
+//
+//        // 값전달을 하려는 뷰 컨트롤러에서 아직 addObserver를 하지 않은 상태에서 post
+//        // 이 경우 보낸 Notification은 받을 수 없다
+//        NotificationCenter.default.post(
+//            name: .recommandKeyword,
+//            object: nil,
+//            userInfo: ["word": word.randomElement()!]
+//        )
     }
 
     @objc func didSearchProtocolButtonClicked(_ sender: UIButton) {
