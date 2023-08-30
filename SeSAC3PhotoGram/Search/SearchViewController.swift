@@ -32,6 +32,9 @@ class SearchViewController: BaseViewController {
             name: .recommandKeyword,
             object: nil
         )
+
+        searchView.searchBar.becomeFirstResponder()
+        searchView.searchBar.delegate = self
     }
 
     @objc func didRecommandKeywordNotificationArrived(_ sender: NSNotification) {
@@ -94,4 +97,12 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         delegate?.passData(UIImage(systemName: imageList[indexPath.item]))
         navigationController?.popViewController(animated: true)
     }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
 }

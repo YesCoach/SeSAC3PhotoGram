@@ -26,18 +26,18 @@ class TitleViewController: BaseViewController {
     }()
 
     @objc func didConfirmButtonClicked(_ sender: UIBarButtonItem) {
-        completionHandler?(textField.text!)
+        completionHandler?(textField.text!, 31, false)
         navigationController?.popViewController(animated: true)
     }
 
     // Closure - 1
-    var completionHandler: ((String) -> Void)?
+    var completionHandler: ((String, Int, Bool) -> Void)?
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
         // Closure - 2
-//        completionHandler?(textField.text!)
+        completionHandler?(textField.text!, 100, true)
     }
 
     override func configureView() {

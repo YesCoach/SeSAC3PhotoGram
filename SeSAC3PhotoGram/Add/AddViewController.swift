@@ -35,6 +35,8 @@ class AddViewController: BaseViewController {
             name: .selectedImage,
             object: nil
         )
+
+        APIService.shared.callRequest()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -110,9 +112,10 @@ class AddViewController: BaseViewController {
 
         // Closure - 3
 
-        viewController.completionHandler = { [weak self] text in
+        viewController.completionHandler = { [weak self] (text, num, bool) in
             guard let self else { return }
             mainView.titleButton.setTitle(text, for: .normal)
+            print("completionHandler", num, bool)
         }
         navigationController?.pushViewController(viewController, animated: true)
     }
