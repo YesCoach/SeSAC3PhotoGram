@@ -11,7 +11,6 @@ class AddView: BaseView {
 
     let photoImageView = {
         let view = UIImageView()
-
         view.contentMode = .scaleAspectFill
         return view
     }()

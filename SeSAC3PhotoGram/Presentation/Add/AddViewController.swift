@@ -8,6 +8,7 @@
 import UIKit
 import SeSACPhotoFramework
 import Kingfisher
+import PhotosUI
 
 // Protocol 값 전달 1.
 protocol PassDataDelegate {
@@ -81,7 +82,14 @@ class AddViewController: BaseViewController {
     @objc func didSearchButtonClicked(_ sender: UIButton) {
 
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let actionGallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default)
+        let actionGallery = UIAlertAction(title: "갤러리에서 가져오기", style: .default) { [weak self] _ in
+            guard let self else { return }
+            var configuration = PHPickerConfiguration()
+            configuration.filter = .any(of: [.images])
+            let pickerViewController = PHPickerViewController(configuration: configuration)
+            pickerViewController.delegate = self
+            present(pickerViewController, animated: true)
+        }
         let actionWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { [weak self] _ in
             guard let self else { return }
             let viewController = SearchViewController()
@@ -176,6 +184,28 @@ class AddViewController: BaseViewController {
     override func configureLayout() {
         super.configureLayout()
         print("Add SetConstraints")
+    }
+}
+
+// MARK: - PHPickerViewControllerDelegate 구현
+
+extension AddViewController: PHPickerViewControllerDelegate {
+
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+
+        picker.dismiss(animated: true)
+
+        let itemProvider = results.first?.itemProvider
+
+        if let itemProvider = itemProvider,
+           itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in // 4
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    mainView.photoImageView.image = image as? UIImage
+                }
+            }
+        }
     }
 }
 
