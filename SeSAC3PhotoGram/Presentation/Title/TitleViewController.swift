@@ -40,6 +40,10 @@ class TitleViewController: BaseViewController {
         completionHandler?(textField.text!, 100, true)
     }
 
+    deinit {
+        print("deinit", self)
+    }
+
     override func configureView() {
         super.configureView()
 

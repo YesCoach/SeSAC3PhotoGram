@@ -24,4 +24,8 @@ class DateViewController: BaseViewController {
         
         super.viewDidDisappear(animated)
     }
+
+    deinit {
+        print("deinit", self)
+    }
 }

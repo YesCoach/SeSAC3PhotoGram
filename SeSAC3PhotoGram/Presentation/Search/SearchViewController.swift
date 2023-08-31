@@ -38,6 +38,11 @@ class SearchViewController: BaseViewController {
         searchView.searchBar.delegate = self
     }
 
+    deinit {
+        print("deinit", self)
+        print(delegate)
+    }
+
     @objc func didRecommandKeywordNotificationArrived(_ sender: NSNotification) {
         print(#function)
     }
@@ -86,11 +91,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         // Presenting 하기 전에 미리 옵저버 등록해야, 나중에 값전달을 받아올때 정상적으로 받을 수 있다.
         // Notification을 통한 값 전달
         /*
-        NotificationCenter.default.post(
-            name: .selectedImage,
-            object: nil,
-            userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"]
-        )
+         NotificationCenter.default.post(
+         name: .selectedImage,
+         object: nil,
+         userInfo: ["name": imageList[indexPath.item], "sample": "고래밥"]
+         )
          */
 
         // Protocol을 통한 값 전달
@@ -106,11 +111,16 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         NetworkManager.shared.callRequest(
             api: .searchPhotos(query: searchBar.text!)
-        ) { [weak self] (data: SearchPhotosResults) in
+        ) { [weak self] (result: Result<SearchPhotosResults, APIError>) in
             guard let self else { return }
-            imageList = data.results.map { $0.urls?.thumb }.compactMap { $0 }
-            DispatchQueue.main.async { [self] in
-                self.searchView.collectionView.reloadData()
+            switch result {
+            case .success(let data):
+                imageList = data.results.map { $0.urls?.thumb }.compactMap { $0 }
+                DispatchQueue.main.async { [self] in
+                    self.searchView.collectionView.reloadData()
+                }
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
             }
         }
     }

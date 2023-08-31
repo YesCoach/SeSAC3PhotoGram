@@ -13,26 +13,39 @@ final class NetworkManager: NSObject {
 
     private override init() { }
 
-    func callRequest<T: Codable>(api: APIURL.Unsplash, completion: @escaping (T) -> ()) {
+    func callRequest<T: Codable>(api: APIURL.Unsplash, completion: @escaping (Result<T, APIError>) -> ()) {
         guard let url = api.url else {
-            // TODO: - Invalid URL
+            completion(.failure(.invalidURL))
             return
         }
         var request = URLRequest(url: url)
         request.httpHeader = APIHeader.Unsplash.header
         request.httpMethod = "GET"
 
-        print(url)
-
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
+
+
+        URLSession.request(session, endpoint: request) { (data: T?, error) in
+            if let error {
+                completion(.failure(error))
+            }
+            if let data {
+                completion(.success(data))
+            }
+        }
+
+        /*
         session.dataTask(with: request) { data, response, error in
             if let error {
-                debugPrint(error)
+//                throw APIError.failedRequest
                 return
             }
             guard let response = response as? HTTPURLResponse,
             (200...299).contains(response.statusCode)
-            else { return }
+            else {
+//                throw APIError.invalidResponse
+                return
+            }
 
             if let data {
                 do {
@@ -45,6 +58,7 @@ final class NetworkManager: NSObject {
             }
             return
         }.resume()
+         */
     }
 
 }

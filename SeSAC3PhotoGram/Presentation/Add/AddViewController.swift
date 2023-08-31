@@ -56,6 +56,10 @@ class AddViewController: BaseViewController {
         /*
         sesacShowActivityViewController(image: .init(systemName: "star")!, url: "hello", text: "hi")
          */
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self else { return }
+            print("SearchViewController deinit 후:", CFGetRetainCount(self))
+        }
     }
 
     /*
@@ -69,6 +73,10 @@ class AddViewController: BaseViewController {
         )
     }
      */
+
+    deinit {
+        print("deinit", self)
+    }
 
     @objc func didSelectedImageNotificationArrived(_ sender: NSNotification) {
 
@@ -89,7 +97,9 @@ class AddViewController: BaseViewController {
         let actionWeb = UIAlertAction(title: "웹에서 검색하기", style: .default) { [weak self] _ in
             guard let self else { return }
             let viewController = SearchViewController()
+            print("SearchViewController delegate 연결 전:",CFGetRetainCount(self))
             viewController.delegate = self
+            print("SearchViewController delegate 연결 후:",CFGetRetainCount(self))
             navigationController?.pushViewController(viewController, animated: true)
         }
         let actionCancel = UIAlertAction(title: "취소", style: .cancel)
@@ -117,8 +127,11 @@ class AddViewController: BaseViewController {
 
     @objc func didDateButtonClicked(_ sender: UIButton) {
         // Protocol 값 전달 5.
-        let viewController = DateViewController()
-        viewController.delegate = self
+//        let viewController = DateViewController()
+//        viewController.delegate = self
+//        navigationController?.pushViewController(viewController, animated: true)
+
+        let viewController = HomeViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
 

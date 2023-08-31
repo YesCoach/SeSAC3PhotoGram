@@ -38,6 +38,10 @@
 		895899FA2A9F186B00F1BF8B /* APIHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899F92A9F186B00F1BF8B /* APIHeader.swift */; };
 		895899FC2A9F193900F1BF8B /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895899FB2A9F193900F1BF8B /* URLRequest+.swift */; };
 		895899FF2A9F368B00F1BF8B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 895899FE2A9F368B00F1BF8B /* Kingfisher */; };
+		89589A012A9F7B5B00F1BF8B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89589A002A9F7B5B00F1BF8B /* APIError.swift */; };
+		89589A032A9F83CA00F1BF8B /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89589A022A9F83CA00F1BF8B /* URLSession+.swift */; };
+		89589A0A2AA01A7100F1BF8B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89589A092AA01A7100F1BF8B /* HomeViewController.swift */; };
+		89589A0C2AA01A7700F1BF8B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89589A0B2AA01A7700F1BF8B /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +99,10 @@
 		895899F72A9F11F000F1BF8B /* SearchPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotos.swift; sourceTree = "<group>"; };
 		895899F92A9F186B00F1BF8B /* APIHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeader.swift; sourceTree = "<group>"; };
 		895899FB2A9F193900F1BF8B /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
+		89589A002A9F7B5B00F1BF8B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		89589A022A9F83CA00F1BF8B /* URLSession+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+.swift"; sourceTree = "<group>"; };
+		89589A092AA01A7100F1BF8B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		89589A0B2AA01A7700F1BF8B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +187,7 @@
 				8958997C2A9D7AB900F1BF8B /* NSNotification+.swift */,
 				895899842A9D8E8400F1BF8B /* DateFormatter+.swift */,
 				895899FB2A9F193900F1BF8B /* URLRequest+.swift */,
+				89589A022A9F83CA00F1BF8B /* URLSession+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -197,8 +206,8 @@
 		895899812A9D7D2800F1BF8B /* Date */ = {
 			isa = PBXGroup;
 			children = (
-				8958997F2A9D7C8100F1BF8B /* DateView.swift */,
 				895899822A9D7D3800F1BF8B /* DateViewController.swift */,
+				8958997F2A9D7C8100F1BF8B /* DateView.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -246,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				8958996C2A9C244C00F1BF8B /* Base */,
+				89589A082AA01A6100F1BF8B /* Home */,
 				895899722A9C2FD300F1BF8B /* Add */,
 				895899812A9D7D2800F1BF8B /* Date */,
 				895899B62A9DB53E00F1BF8B /* Title */,
@@ -271,6 +281,7 @@
 				895899E82A9F0DA900F1BF8B /* APIURL.swift */,
 				895899F92A9F186B00F1BF8B /* APIHeader.swift */,
 				895899F32A9F11B100F1BF8B /* APIKey.swift */,
+				89589A002A9F7B5B00F1BF8B /* APIError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -297,6 +308,15 @@
 				895899F72A9F11F000F1BF8B /* SearchPhotos.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		89589A082AA01A6100F1BF8B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				89589A092AA01A7100F1BF8B /* HomeViewController.swift */,
+				89589A0B2AA01A7700F1BF8B /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				895899BB2A9DC0E300F1BF8B /* ContentViewController.swift in Sources */,
+				89589A0C2AA01A7700F1BF8B /* HomeView.swift in Sources */,
 				895899F42A9F11B100F1BF8B /* APIKey.swift in Sources */,
 				895899742A9C300600F1BF8B /* AddView.swift in Sources */,
 				895899FC2A9F193900F1BF8B /* URLRequest+.swift in Sources */,
@@ -409,15 +430,18 @@
 				8958997D2A9D7AB900F1BF8B /* NSNotification+.swift in Sources */,
 				895899FA2A9F186B00F1BF8B /* APIHeader.swift in Sources */,
 				895899802A9D7C8100F1BF8B /* DateView.swift in Sources */,
+				89589A0A2AA01A7100F1BF8B /* HomeViewController.swift in Sources */,
 				8958996B2A9C243200F1BF8B /* BaseViewController.swift in Sources */,
 				895899E42A9EEBD300F1BF8B /* URLSessionViewController.swift in Sources */,
 				895899762A9C337B00F1BF8B /* SearchView.swift in Sources */,
 				895899852A9D8E8400F1BF8B /* DateFormatter+.swift in Sources */,
+				89589A032A9F83CA00F1BF8B /* URLSession+.swift in Sources */,
 				895899BD2A9DC75100F1BF8B /* WebViewController.swift in Sources */,
 				895899712A9C2EC700F1BF8B /* BaseView.swift in Sources */,
 				895899542A9C1DA400F1BF8B /* AppDelegate.swift in Sources */,
 				895899562A9C1DA400F1BF8B /* SceneDelegate.swift in Sources */,
 				895899E22A9EC74900F1BF8B /* NetworkManager.swift in Sources */,
+				89589A012A9F7B5B00F1BF8B /* APIError.swift in Sources */,
 				895899B82A9DB55400F1BF8B /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
