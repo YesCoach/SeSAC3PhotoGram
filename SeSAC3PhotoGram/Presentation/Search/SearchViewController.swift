@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-protocol SearchViewControllerDelegate {
+protocol SearchViewControllerDelegate: AnyObject {
     func passData(_ imageURL: String)
 }
 
@@ -17,7 +17,7 @@ class SearchViewController: BaseViewController {
     let searchView = SearchView()
 
     var imageList: [String] = []
-    var delegate: SearchViewControllerDelegate?
+    weak var delegate: SearchViewControllerDelegate?
 
     override func loadView() {
         self.view = searchView

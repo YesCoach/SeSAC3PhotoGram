@@ -11,7 +11,7 @@ import Kingfisher
 import PhotosUI
 
 // Protocol 값 전달 1.
-protocol PassDataDelegate {
+protocol PassDataDelegate: AnyObject {
     func receiveDate(date: Date)
 }
 

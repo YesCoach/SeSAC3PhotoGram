@@ -12,7 +12,7 @@ class DateViewController: BaseViewController {
     let mainView = DateView()
 
     // Protocol 값 전달 2.
-    var delegate: PassDataDelegate?
+    weak var delegate: PassDataDelegate?
 
     override func loadView() {
         self.view = mainView
